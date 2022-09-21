@@ -111,8 +111,6 @@ const displayCart = () => {
         });
 
         productTable.innerHTML += `<div class="d-flex"><p><b>Total Price Cart:</b> $${cartCost}</p></div>`
-    } else {
-        console.log("nay")
     }
 }
 

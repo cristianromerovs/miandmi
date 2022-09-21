@@ -1,25 +1,35 @@
+/* Inspiration https://www.behance.net/gallery/148903613/Product-Showcase-Landing-Page?tracking_source=search_projects%7Cproduct%20view%20ecommerce */
 :root {
-  --primary-color: #8a4af3;
-  --secondary-color: #191919;
+  --first-color: #8a4af3;
+  --second-color: #22293c;
+  --third-color: #ebebeb;
 }
 
 body {
   font-family: 'Lato', sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6, p, a{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
   margin-bottom: 0;
 }
 
 .topnav-cart .btn-cart {
   font-size: 30px;
-  color: var(--primary-color);
+  color: var(--first-color);
   position: relative;
-  transition: .3s;
+  transition: .5s;
   display: flex;
   align-items: center;
   text-decoration: none;
 }
+
 .topnav-cart .btn-cart span {
   font-size: 15px;
   font-weight: 800;
@@ -27,8 +37,9 @@ h1, h2, h3, h4, h5, h6, p, a{
   display: flex;
   align-items: center;
 }
+
 .topnav-cart .btn-cart:hover {
-  color: var(--secondary-color);
+  color: var(--second-color);
 }
 
 nav.navbar {
@@ -55,40 +66,121 @@ nav.navbar .navbar-nav .nav-item .nav-link {
 .banner-bg h1 {
   font-weight: 700;
   color: #fff;
-  font-size: 4em;
+  font-size: 3.5em;
 }
 
 .banner-bg .btn.btn_shopnow {
   background-color: #fff;
-  font-size: 1.4em;
+  font-size: 1.2em;
   font-weight: 700;
-  color: var(--secondary-color);
+  color: var(--second-color);
   border-radius: 0;
   border: none;
   padding: .5em 1.8em;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: .5s;
+}
+
+.banner-bg .btn.btn_shopnow:hover {
+  background-color: var(--first-color);
+  color: #fff;
 }
 
 section.product-carrousel a.card {
   border: none;
   margin: 1em 0;
   cursor: pointer;
+  transition: .5s;
+  position: relative;
+}
+
+section.product-carrousel a.card.discount-shape::before {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  background-color: #8a4af3;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  content: '30% 0ff';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section.product-carrousel a.card:hover {
+  background-color: var(--second-color);
+  color: #fff;
 }
 
 section.product-carrousel a {
   text-decoration: none;
-  color: var(--secondary-color);
+  color: var(--second-color);
 }
 
 section.product-carrousel a.card .card-name {
   font-size: .8em;
 }
+
 section.product-carrousel a.card .card-price {
   font-size: 1em;
   font-weight: 700;
   text-decoration: none;
+}
+
+/* Product View */
+.product-view__image {
+  width: 100%;
+  height: auto;
+}
+
+.product-view__title,
+.product-view__description,
+.product-view__price {
+  color: var(--second-color);
+}
+
+.product-view__title {
+  font-weight: 800;
+  font-size: 1.3em;
+}
+
+.product-view__description {
+  font-weight: 400;
+  font-size: 1em;
+}
+
+.product-view__price {
+  font-weight: 600;
+  font-size: 1.2em;
+}
+
+.product-view__addCart {
+  background-color: var(--second-color);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0;
+  width: 100%;
+  height: 50px;
+  transition: .5s;
+}
+
+
+.product-view__addCart ion-icon {
+  font-size: 1.3em;
+}
+.product-view__addCart:hover {
+  background-color: var(--first-color);
+  color: #fff;
 }
 
 /* Media Querys */

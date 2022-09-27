@@ -7,14 +7,6 @@ async function obtenerProductos(result) {
         let productos = await getSheet(idSheet, "hoja");
         let cardProductos = "";
 
-        // if (result) {
-        //     productos.forEach(producto => {
-        //         console.log(producto);
-        //     });
-        // } else {
-        //     console.log("sin data")
-        // }
-
         productos.forEach(producto => {
             let id = producto.id;
             let nombre = producto.nombre;

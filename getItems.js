@@ -1,5 +1,17 @@
 let divProduct = document.querySelector("#product-view");
 
+const getRoute = () => {
+    let myRoute = window.location.pathname;
+    console.log(myRoute);
+    if (myRoute == "/index.html" || myRoute == "/") {
+        obtenerProductos()
+    } else if (myRoute == "/product-view.html") {
+        
+    }
+}
+
+getRoute();
+
 async function obtenerProductos(result) {
     //https://docs.google.com/spreadsheets/d/1ox9wskDhmQCC--jcWSNbNKR-Oc3zTR5ufEayvUM88bM/
     try {
@@ -16,10 +28,10 @@ async function obtenerProductos(result) {
             let tipo = producto.tipo;
             let descripcion = producto.descripcion;
             let etiquetas = producto.etiquetas;
+
+            console.log(producto)
             
             if (result == id) {
-                // console.log(id, nombre, precio, imagen, descuento, tipo, descripcion, etiquetas);
-                // divProduct.innerHTML = "";
                 divProduct.innerHTML = `
                 <div class="row">
                     <div class="col-12 col-md-8">
@@ -35,8 +47,6 @@ async function obtenerProductos(result) {
                     </div>
                 </div>
                 `
-            } else {
-                // divProduct.innerHTML = `<h1>Producto no encontrado</h1>`
             }
         });
     } catch (e) {

@@ -1,13 +1,10 @@
-searchProduct = (result) => {
-    console.log("el id de producto es:", result)
-    obtenerProductos(result);
-}
+let divProduct = document.querySelector("#product-view");
 
-const getUrl = () => {
+const getUrlItem = () => {
     let parameters = new URLSearchParams(window.location.search);
     result = parameters.get("product");
     // result = result.toUpperCase();
-    result ? searchProduct(result) : console.log("producto no encontrado")
+    // result ? searchProduct(result) : console.log("producto no encontrado")
 }
 
-getUrl();
+getUrlItem();

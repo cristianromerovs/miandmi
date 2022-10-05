@@ -13,7 +13,6 @@ async function obtenerProductos(myRoute) {
         let productos = await getSheet(idSheet, 'hoja');
         let cardProductos = '';
 
-        console.log(productos);
         if (myRoute == '/index.html' || myRoute == '/') {
             productos.forEach((producto) => {
                 appDiv.innerHTML += `

@@ -1,10 +1,54 @@
-let divProduct = document.querySelector("#product-view");
+const addProduct = (product) => {
+    let addCartBtn = document.querySelector(".product-view__addCart");
+    addCartBtn.addEventListener("click", () => {
+        // cartNumbers(product);
+        console.log(product);
+    })
+};
 
-const getUrlItem = () => {
-    let parameters = new URLSearchParams(window.location.search);
-    result = parameters.get("product");
-    // result = result.toUpperCase();
-    // result ? searchProduct(result) : console.log("producto no encontrado")
+
+// for (let i = 0; i < carts.length; i++) {
+//     carts[i].addEventListener("click", () => {
+//         cartNumbers(products[i]);
+//         totalCost(products[i]);
+//     })
+// }
+
+
+
+const cartNumbers = (product) => {
+    let productNumbers = localStorage.getItem('cartNumbers');
+    productNumbers = parseInt(productNumbers);
+
+    if (productNumbers) {
+        localStorage.setItem('cartNumbers', productNumbers + 1);
+        document.querySelector('.btn-cart span').textContent = productNumbers + 1;
+    } else {
+        localStorage.setItem('cartNumbers', 1);
+        document.querySelector('.btn-cart span').textContent = 1;
+    }
+    setItems(product);
 }
 
-getUrlItem();
+const setItems = (product) => {
+    let cartItems = localStorage.getItem('productsInCart');
+    cartItems = JSON.parse(cartItems);
+
+    console.log(product)
+
+    if (cartItems != null) {
+        if (cartItems[tag] == undefined) {
+            cartItems = {
+                ...cartItems,
+                [tag]: product
+            }
+        }
+        cartItems[3] += 1;
+    } else {
+        inCart = 1;
+        cartItems = {
+            [tag]: product
+        }
+    }
+    localStorage.setItem("productsInCart", JSON.stringify(cartItems));
+}

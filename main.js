@@ -4,7 +4,7 @@ const onloadCartNumbers = () => {
     if (productNumbers) {
         document.querySelector('.btn-cart span').textContent = productNumbers;
     } else {
-        document.querySelector('topnav-cart .btn-cart span').style.color = red;
+        document.querySelector('.topnav-cart .btn-cart span').style.color = "red";
     }
 }
 
@@ -30,13 +30,13 @@ const displayCart = () => {
     if (cartItems && myPathname == "/cart.html") {
         productTable.innerHTML = ""
         Object.values(cartItems).map(item => {
-            // productTable.innerHTML +=
-            //     `<tr>
-            //     <td>${item[1]}</td>
-            //     <td>$${item[2]}</td>
-            //     <td>${item[3]}</td>
-            //     <td>$${item[3] * item[2]}</td>
-            // </tr>`
+            productTable.innerHTML += 
+            `<tr>
+                <td>${item.name}</td>
+                <td>$${item.price}</td>
+                <td>${item.inCart}</td>
+                <td>$${item.inCart * item.price}</td>
+            </tr>`
         });
 
         productTable.innerHTML += `<div class="d-flex"><p><b>Total Price Cart:</b> $${cartCost}</p></div>`

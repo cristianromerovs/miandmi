@@ -2,16 +2,9 @@ const addProduct = (product) => {
     let addCartBtn = document.querySelector(".product-view__addCart");
     addCartBtn.addEventListener("click", () => {
         cartNumbers(product);
+        totalCost(product);
     })
 };
-
-
-// for (let i = 0; i < carts.length; i++) {
-//     carts[i].addEventListener("click", () => {
-//         cartNumbers(products[i]);
-//         totalCost(products[i]);
-//     })
-// }
 
 const cartNumbers = (product) => {
     let productNumbers = localStorage.getItem('cartNumbers');
@@ -24,8 +17,30 @@ const cartNumbers = (product) => {
         localStorage.setItem('cartNumbers', 1);
         document.querySelector('.btn-cart span').textContent = 1;
     }
-    console.log(productNumbers)
+
     setItems(product);
+}
+
+const setItems = (product) => {
+    let cartItems = localStorage.getItem('productsInCart');
+    cartItems = JSON.parse(cartItems);
+
+    if (cartItems != null) {
+        if (cartItems[product.tag] == undefined) {
+            cartItems = {
+                ...cartItems, 
+                [product.tag]: product
+            }
+        }
+        cartItems[product.tag].inCart += 1;
+    } else {
+        product.inCart = 1;
+        cartItems = {
+            [product.tag]: product
+        }
+    }
+
+    localStorage.setItem("productsInCart", JSON.stringify(cartItems));
 }
 
 // const setItems = (product) => {
@@ -51,25 +66,13 @@ const cartNumbers = (product) => {
 //     localStorage.setItem("productsInCart", JSON.stringify(cartItems));
 // }
 
-const setItems = (product) => {
-    let cartItems = localStorage.getItem('productsInCart');
-    cartItems = JSON.parse(cartItems);
+const totalCost = (product) => {
+    let cartCost = localStorage.getItem("totalCost");
 
-    if (cartItems != null) {
-        if (cartItems[product.tag] == undefined) {
-            cartItems = {
-                ...cartItems, 
-                [product.tag]: product
-            }
-        }
-        cartItems[product.tag].inCart += 1;
+    if (cartCost != null) {
+        cartCost = parseInt(cartCost);
+        localStorage.setItem("totalCost", cartCost + product.price);
     } else {
-        product.inCart = 1;
-        cartItems = {
-            [product.tag]: product
-        }
+        localStorage.setItem("totalCost", product.price);
     }
-    console.log(cartItems)
-
-    localStorage.setItem("productsInCart", JSON.stringify(cartItems));
 }

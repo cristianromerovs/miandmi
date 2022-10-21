@@ -33,7 +33,7 @@ async function obtenerProductos(myRoute) {
                 let productChecker = false;
                 let id, nombre, precio, descripcion, imagen = ""
                 // let inCart = 0;
-                let product = [{}];
+                let product = {};
                 result = parameters.get("product");
                 // result = result.toUpperCase();
                 // result ? searchProduct(result) : console.log("producto no encontrado")
@@ -45,12 +45,12 @@ async function obtenerProductos(myRoute) {
                         imagen = producto.imagen;
                         descripcion = producto.descripcion;
                         tag = producto.tag;
-                        product = [{
+                        product = {
                             name: producto.nombre,
                             tag: producto.tag,
                             price: producto.precio,
                             inCart: 0
-                        }]
+                        }
                     }
                     return;
                 });
